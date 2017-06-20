@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.TrolleyDao">
+
+	<select id="search" resultType="entity.Trolley">
+		select * from trolley as t left
+		join
+		merchandise as m on t.merchandise_id=m.id where user_id=#{0}
+	</select>
+
+	<select id="searchByMid" resultType="entity.Trolley">
+		select * from trolley where
+		merchandise_id=#{0}
+	</select>
+
+	<insert id="add" parameterType="int">
+		insert into
+		trolley(count,user_id,merchandise_id)
+		values(#{1},#{2},#{0})
+	</insert>
+
+	<insert id="addByDetail">
+		insert into trolley(count,merchandise_id)
+		values(#{0},#{1})
+	</insert>
+
+	<select id="searchAll" resultType="entity.Merchandise">
+		select * from trolley as t
+		inner join merchandise as m on t.merchandise_id=m.id
+	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from trolley where
+		id=#{0}
+	</delete>
+
+	<update id="update">
+		update trolley set
+		count=count+#{0} where merchandise_id=#{1}
+	</update>
+
+
+</mapper> 
+    
