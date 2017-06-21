@@ -11,7 +11,7 @@ public interface TrolleyDao {
 
 	public int add(int id, int count, int userId);
 
-	public List<Merchandise> searchAll();
+	public List<Trolley> searchAll();
 
 	public int delete(int id);
 	

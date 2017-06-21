@@ -3,8 +3,8 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-	+ request.getServerName() + ":" + request.getServerPort()
-	+ path + "/";
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -112,6 +112,7 @@ li {
 #right {
 	right: 0px;
 }
+
 #bigPhoto {
 	display: none;
 	position: absolute;
@@ -128,53 +129,53 @@ li {
 		$("#begin").click(function() {
 			window.location.href = "show";
 		});
-		
+
 		$(".jiaru").click(function() {
 			var id = $(this).data("id");
-			var count =$("#txt").val();
+			var count = $("#txt").val();
 			alert(id);
 			alert(count);
-			window.location.href = "addByDetail?id=" + id+ "&count=" + count;
-						});
+			window.location.href = "addByDetail?id=" + id + "&count=" + count;
+		});
 
-				$("#top li,#shouye li,#slide li").hover(function() {
-					$(this).css("color", "red");
-				}, function() {
-					$(this).css("color", "black");
-					$("#mianfeizhuce").css("color", "red");
-				});
-				$("#jia").click(function() {
-					var x = $("#txt").val() - 0;
-					x++;
-					$("#txt").val(x);
-				});
-				$("#jian").click(function() {
-					var x = $("#txt").val() - 0;
-					x--;
-					if (x < 1) {
-						x = 1;
-					}
-					$("#txt").val(x);
-				});
-				
-				$(".photo").mouseover(function(event) {
-					$("#bigPhoto").show();
-					$("#bigPhoto").children().attr("src",$(this).attr("src"));
-					$("#bigPhoto").offset({
-						left : event.pageX - 80,
-						top : event.pageY - 80,
-					});
-				});
-				$(".photo").mouseout(function() {
-					$("#bigPhoto").hide();
-				});
-				
+		$("#top li,#shouye li,#slide li").hover(function() {
+			$(this).css("color", "red");
+		}, function() {
+			$(this).css("color", "black");
+			$("#mianfeizhuce").css("color", "red");
+		});
+		$("#jia").click(function() {
+			var x = $("#txt").val() - 0;
+			x++;
+			$("#txt").val(x);
+		});
+		$("#jian").click(function() {
+			var x = $("#txt").val() - 0;
+			x--;
+			if (x < 1) {
+				x = 1;
+			}
+			$("#txt").val(x);
+		});
+
+		$(".photo").mouseover(function(event) {
+			$("#bigPhoto").show();
+			$("#bigPhoto").children().attr("src", $(this).attr("src"));
+			$("#bigPhoto").offset({
+				left : event.pageX - 80,
+				top : event.pageY - 80,
 			});
+		});
+		$(".photo").mouseout(function() {
+			$("#bigPhoto").hide();
+		});
+
+	});
 </script>
 </head>
 <%
-			Merchandise mer = (Merchandise) request.getAttribute("mer");
-		%>
+	Merchandise mer = (Merchandise) request.getAttribute("mer");
+%>
 <body>
 	<div id="d1">
 		<div style="margin-left: 100px;">送至：</div>
@@ -263,10 +264,10 @@ li {
 		<p>&nbsp;&nbsp;
 			小说&nbsp;&nbsp;&nbsp;&nbsp;情感/家庭/婚姻&nbsp;&nbsp;&nbsp;&nbsp;博集天卷&nbsp;&nbsp;&nbsp;&nbsp;好吗好吗(京东爱你！)</p>
 	</div>
-	
+
 	<div
 		style="width: 1200px;height: 450px;margin-left: 120px;margin-top: 5px;border: solid 1px #CCCCCC;">
-		
+
 		<div
 			style="width:150px;height:180px;float:left;margin-left: 75px;margin-top:40px">
 			<img class="photo" src="<%=mer.getPhoto()%>">
@@ -289,8 +290,8 @@ li {
 			<div style="list-style: none;">服&nbsp;&nbsp;务：&nbsp;&nbsp;由&nbsp;京东&nbsp;发货，并提供售后服务。现在至明天16:00前完成下单，预计两天即可送达</div>
 			<div style="list-style: none;line-height: 30px;">提&nbsp;&nbsp;示：&nbsp;&nbsp;支持7天无理由退货</div>
 		</div>
-		
-		
+
+
 		<div
 			style="width: 300px;height: 30px;margin-top: 30px;margin-left: 50px;font-size: 10px;">
 			<ul style="list-style: none;">
@@ -304,7 +305,8 @@ li {
 				style="position: absolute; width: 15px;height: 15px;margin-left: -5px;" />
 			<input id="jian" type="button" value="-"
 				style="position: absolute; width: 15px;height: 15px;margin-left: -5px;margin-top: 15px;" />
-			<input class="jiaru" data-id="<%=mer.getId()%>" type="button" value="加入购物车"
+			<input class="jiaru" data-id="<%=mer.getId()%>" type="button"
+				value="加入购物车"
 				style="width: 100px;height: 30px;margin-left: 20px; text-align: center; background-color: #B61D1D;color: #FFF; cursor:pointer;border:#C03;" />
 		</div>
 	</div>

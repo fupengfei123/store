@@ -27,7 +27,7 @@ public class TrolleyServiceImpl implements TrolleyService {
 	}
 
 	@Override
-	public List<Merchandise> show() {
+	public List<Trolley> show() {
 		return tDao.searchAll();
 	}
 

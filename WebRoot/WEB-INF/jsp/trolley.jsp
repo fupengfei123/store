@@ -1,5 +1,4 @@
-<%@page import="entity.Merchandise"%>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,entity.*" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -107,8 +106,6 @@
 			var id = $(this).data("id");
 			window.location.href = "delete?id=" + id;
 		});
-		
-		
 		
 		$("#checkAll").click(function() {
 			if ($("#checkAll").is(":checked")) {
@@ -234,35 +231,34 @@
 	</div>
 
 	<%
-		List<Merchandise> list = (List<Merchandise>) request
-				.getAttribute("mers");
+		List<Trolley> list = (List<Trolley>) request.getAttribute("mers");
 	%>
 	<div id="G-select">
 		<%
 			for (int i = 0; i < list.size(); i++) {
 		%>
 		<div style="overflow:hidden;">
-			<input class="d" type="checkbox" name="ch" style="margin-left: 30px;margin-top:30px; float:left" />
+			<input type="checkbox" name="ch" style="margin-left: 30px;margin-top:30px; float:left" />
 			<div style="width: 100px;margin-left:80px;float:left">
-				<img src="<%=list.get(i).getPhoto()%>"
-					style="width:100px;height:150px;margin-top:20px" />
+				<a href="detail?id=<%=list.get(i).getMerchandise().getId()%>"><img src="<%=list.get(i).getMerchandise().getPhoto()%>"
+					style="width:100px;height:150px;margin-top:20px" /></a>
 			</div>
 			<div style="width: 150px;margin-left: 60px;margin-top:30px;float:left">
-				<%=list.get(i).getDetail()%></div>
+				<%=list.get(i).getMerchandise().getDetail()%></div>
 				
-			<div class="subprice" style="font-size: 20px;margin-top:30px; float:left;"><%=list.get(i).getPrice()%></div>
+			<div style="font-size: 20px;margin-top:30px; float:left;"><%=list.get(i).getMerchandise().getPrice()%></div>
 			
-			<div class="g" style="width: 20px;height: 25px;margin-top:30px;margin-left: 130px;float:left;">
+			<div style="width: 20px;height: 25px;margin-top:30px;margin-left: 130px;float:left;">
 			<input class="jian" type="button" value="-" style="width: 20px;height: 25px;float:left" />
 			 
-			<input type="text"  class="txt" value="<%=list.get(i).getCount()%>"
+			<input type="text"  class="txt" value="<%=list.get(i).getMerchandise().getCount()%>"
 				style="width: 40px;height: 25px;margin-top:-25px;margin-left: 20px;float:left " />
 				
 			<input  class="jia" type="button" value="+" style="margin-top:-25px;margin-left: 60px; width: 20px;height: 25px;float:left" />
 			</div>
 			
 		<div
-			style="font-size: 20px;margin-left: 200px;margin-top:30px; float:left"><%=new java.text.DecimalFormat("#.00").format(list.get(i).getPrice()*list.get(i).getCount())%></div>
+			style="font-size: 20px;margin-left: 200px;margin-top:30px; float:left"><%=new java.text.DecimalFormat("#.00").format(list.get(i).getMerchandise().getPrice()*list.get(i).getMerchandise().getCount())%></div>
 		<input class="del" data-id="<%=list.get(i).getId()%>" type="button"
 			value="删除"
 			style="width: 50px;height: 30px;margin-left: 100px;margin-top:30px;float:left" />
@@ -271,7 +267,7 @@
 		}
 	%>
 
-	<div style="width: 1200px;border:red solid 1px">
+	<div style="width: 1200px;">
 		<p style="color:#000;margin-left:530px;margin-top:20px;float:left;">已选择</p>
 		<p style="color:#F00;margin-left:5px;margin-top:20px;float:left;" ><span  id="n" >0</span></p>
 		<p style="color:#000;margin-left:5px;margin-top:20px;float:left;">件商品</p>

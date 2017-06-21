@@ -9,7 +9,7 @@ public interface TrolleyService {
 	
 	public List<Trolley> search(int userId);
 	public int add(int id,int count,int userId);
-	public List<Merchandise> show();
+	public List<Trolley> show();
 	public int delete(int id);
 	
 	public Trolley searchByMid(int id);

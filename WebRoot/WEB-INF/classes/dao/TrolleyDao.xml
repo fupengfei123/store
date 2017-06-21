@@ -27,10 +27,23 @@
 		values(#{0},#{1})
 	</insert>
 
-	<select id="searchAll" resultType="entity.Merchandise">
-		select * from trolley as t
-		inner join merchandise as m on t.merchandise_id=m.id
+	<select id="searchAll" resultMap="TrolleyAndMerchandise">
+		select
+		m.id,m.name,m.detail,m.photo,m.price,t.id as tId,t.count from
+		merchandise as m inner join trolley as t on m.id=t.merchandise_id
 	</select>
+
+	<resultMap type="entity.Trolley" id="TrolleyAndMerchandise">
+		<id property="id" column="tId" />
+		<collection property="merchandise" column="merchandise_id"
+			ofType="entity.Merchandise">
+			<id property="id" column="id" />
+			<result property="detail" column="detail" />
+			<result property="price" column="price" />
+			<result property="count" column="count" />
+			<result property="photo" column="photo" />
+		</collection>
+	</resultMap>
 
 	<delete id="delete" parameterType="int">
 		delete from trolley where
@@ -39,7 +52,8 @@
 
 	<update id="update">
 		update trolley set
-		count=count+#{0} where merchandise_id=#{1}
+		count=count+#{0} where
+		merchandise_id=#{1}
 	</update>
 
 

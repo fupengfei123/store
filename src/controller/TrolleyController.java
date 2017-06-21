@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.TrolleyService;
-import entity.Merchandise;
 import entity.Trolley;
 
 @Controller
@@ -19,7 +18,7 @@ public class TrolleyController {
 	@RequestMapping(value="showTrolley")
 	public ModelAndView showList() {
 		ModelAndView mv = new ModelAndView("trolley");
-		List<Merchandise> list = tService.show();
+		List<Trolley> list = tService.show();
 		mv.addObject("mers", list);
 		return mv;
 	}
@@ -61,7 +60,7 @@ public class TrolleyController {
 	public ModelAndView delete(int id) {
 		tService.delete(id);	
 		ModelAndView mv = new ModelAndView("trolley");
-		List<Merchandise> list = tService.show();
+		List<Trolley> list = tService.show();
 		mv.addObject("mers", list);
 		return mv;
 	}
@@ -76,4 +75,5 @@ public class TrolleyController {
 		}
 		return "redirect:showTrolley";
 	}
+	
 }

@@ -26,10 +26,9 @@ public class DetailController {
 	public ModelAndView detail(int id) {
 		ModelAndView mv = new ModelAndView("detail");
 		Merchandise mers =  deService.searchById(id);
-		List<Merchandise> list = deService.search();
-		mv.addObject("mers", list);
 		mv.addObject("mer", mers);
 		return mv;
 	}
+	
 	
 }
